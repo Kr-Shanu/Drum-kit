@@ -34,6 +34,7 @@ function handle_click()
     // alert("Got fucked😨!");
     var buttonInnerHTML = this.innerHTML;
     make_sound(buttonInnerHTML);
+    button_animation(buttonInnerHTML);
 }
 
 // In order to detect the key press we can use the 
@@ -46,6 +47,7 @@ function handle_click()
 document.addEventListener("keydown", function(event){
 
     make_sound(event.key);
+    button_animation(event.key);
 
 });
 
@@ -100,4 +102,15 @@ function make_sound(input)
         default: console.log(buttonInnerHTML);
     }
     
+}
+
+function button_animation(currentKey)
+{
+    var active_button = document.querySelector("."+currentKey);
+    active_button.classList.add("pressed");
+
+    setTimeout(function(){
+        active_button.classList.remove("pressed");
+
+    }, 100);
 }
